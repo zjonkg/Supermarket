@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -27,22 +26,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (!bitmapList.isEmpty()) {
-            addProduct(0, 0, 2.29, "Naranja");
-            addProduct(1, 0, 1.45, "Banana");
-            addProduct(2, 0, 4.69, "Kiwi");
-            addProduct(3, 0, 1.95, "Higo");
-            addProduct(4, 0, 2.15, "Toronja");
-            addProduct(5, 0, 1.89, "Pera");
-            addProduct(6, 0, 3.78, "Granada");
-            addProduct(7, 0, 1.49, "Papaya");
-            addProduct(8, 0, 9.96, "Cereza");
-            addProduct(9, 0, 1.49, "Guayaba");
-            addProduct(10, 0, 1.49, "Manzana verde");
-            addProduct(11, 0, 2.75, "Durazno");
-            addProduct(12, 0, 1.49, "Maracuyá");
-            addProduct(13, 0, 3.97, "Lima");
-            addProduct(14, 0, 5.30, "Coco");
-
+            addProduct(0, 2.29, "Naranja");
+            addProduct(1, 1.45, "Banana");
+            addProduct(2, 4.69, "Kiwi");
+            addProduct(3, 1.95, "Higo");
+            addProduct(4, 2.15, "Toronja");
+            addProduct(5, 1.89, "Pera");
+            addProduct(6, 3.78, "Granada");
+            addProduct(7, 1.49, "Papaya");
+            addProduct(8, 9.96, "Cereza");
+            addProduct(9, 1.49, "Guayaba");
+            addProduct(10, 1.49, "Manzana verde");
+            addProduct(11, 2.75, "Durazno");
+            addProduct(12, 1.49, "Maracuyá");
+            addProduct(13, 3.97, "Lima");
+            addProduct(14, 5.30, "Coco");
         }
 
         LlamadaAdaptadorPropioListView();
@@ -69,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void addProduct(int imageIndex, int quantity, double price, String name) {
+    private void addProduct(int imageIndex, double price, String name) {
         if (imageIndex >= 0 && imageIndex < bitmapList.size()) {
             Product product = new Product(bitmapList.get(imageIndex));
             product.setName(name);
-            product.setQuantity(quantity);
+            product.setQuantity(0);
             product.setPrice(price);
             productList.add(product);
         }

@@ -46,6 +46,7 @@ public class ProductAdapter extends BaseAdapter {
         ImageView productImage = view.findViewById(R.id.productImage);
         TextView productQuantity = view.findViewById(R.id.productQuantity);
         TextView productPrice = view.findViewById(R.id.productPrice);
+        TextView productName = view.findViewById(R.id.productName);
 
         Button buttonAdd = view.findViewById(R.id.buttonAdd);
         Button buttonRemove = view.findViewById(R.id.buttonRemove);
@@ -57,6 +58,8 @@ public class ProductAdapter extends BaseAdapter {
         productImage.setImageBitmap(product.getImage()); //
         productQuantity.setText("Cantidad: " + product.getQuantity());
         productPrice.setText("Precio: $" + String.format("%.2f", product.getPrice()));
+        productName.setText(product.getName());
+
 
 
         buttonAdd.setOnClickListener(v -> {

@@ -27,6 +27,10 @@ public class Product {
         return price;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
