@@ -27,21 +27,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (!bitmapList.isEmpty()) {
-            addProduct(0, 0, 2.99);
-            addProduct(1, 0, 1.49);
-            addProduct(2, 0, 4.49);
-            addProduct(3, 0, 1.49);
-            addProduct(4, 0, 2.49);
-            addProduct(5, 0, 1.49);
-            addProduct(6, 0, 3.49);
-            addProduct(7, 0, 1.49);
-            addProduct(8, 0, 1.49);
-            addProduct(9, 0, 1.49);
-            addProduct(10, 0, 1.49);
-            addProduct(11, 0, 1.49);
-            addProduct(12, 0, 1.49);
-            addProduct(13, 0, 1.49);
-            addProduct(14, 0, 1.49);
+            addProduct(0, 0, 2.29, "Naranja");
+            addProduct(1, 0, 1.45, "Banana");
+            addProduct(2, 0, 4.69, "Kiwi");
+            addProduct(3, 0, 1.95, "Higo");
+            addProduct(4, 0, 2.15, "Toronja");
+            addProduct(5, 0, 1.89, "Pera");
+            addProduct(6, 0, 3.78, "Granada");
+            addProduct(7, 0, 1.49, "Papaya");
+            addProduct(8, 0, 9.96, "Cereza");
+            addProduct(9, 0, 1.49, "Guayaba");
+            addProduct(10, 0, 1.49, "Manzana verde");
+            addProduct(11, 0, 2.75, "Durazno");
+            addProduct(12, 0, 1.49, "Maracuyá");
+            addProduct(13, 0, 3.97, "Lima");
+            addProduct(14, 0, 5.30, "Coco");
+
         }
 
         LlamadaAdaptadorPropioListView();
@@ -68,16 +69,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void addProduct(int imageIndex, int quantity, double price) {
+    private void addProduct(int imageIndex, int quantity, double price, String name) {
         if (imageIndex >= 0 && imageIndex < bitmapList.size()) {
             Product product = new Product(bitmapList.get(imageIndex));
+            product.setName(name);
             product.setQuantity(quantity);
             product.setPrice(price);
             productList.add(product);
-
-            Log.d("MainActivity", "Producto agregado: Cantidad: " + quantity + ", Precio: " + price);
-        } else {
-            Log.e("MainActivity", "Índice de imagen no válido: " + imageIndex);
         }
     }
 
