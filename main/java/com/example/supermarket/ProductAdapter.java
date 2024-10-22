@@ -61,7 +61,6 @@ public class ProductAdapter extends BaseAdapter {
         productName.setText(product.getName());
 
 
-
         buttonAdd.setOnClickListener(v -> {
             product.setQuantity(product.getQuantity() + 1);
             productQuantity.setText("Cantidad: " + product.getQuantity());
@@ -76,7 +75,4 @@ public class ProductAdapter extends BaseAdapter {
 
         return view;
     }
-
-
-
 }

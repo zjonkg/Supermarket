@@ -2,16 +2,21 @@ package com.example.supermarket;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Bitmap> bitmapList;
     private ArrayList<Product> productList;
+    private ArrayList<Product> productListSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
         LlamadaAdaptadorPropioListView();
+
+
+        Button button = findViewById(R.id.buy);
+
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productListSelected = getProductSelected();
+
+                if (!productListSelected.isEmpty()) {
+                    Intent intent = new Intent(MainActivity.this, Buy.class);
+                    intent.putParcelableArrayListExtra("Product", productListSelected);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "No has seleccionado productos", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
+
     }
 
     private void loadImages() {
@@ -76,6 +104,23 @@ public class MainActivity extends AppCompatActivity {
             productList.add(product);
         }
     }
+
+    private ArrayList<Product>  getProductSelected(){
+        productListSelected = new ArrayList<Product>();
+
+        for (Product product: productList) {
+            if (product.getQuantity() > 0) {
+                Product selectedProduct = new Product(product.getImage());
+                selectedProduct.setName(product.getName());
+                selectedProduct.setQuantity(product.getQuantity());
+                selectedProduct.setPrice(product.getPrice());
+
+                productListSelected.add(selectedProduct);
+            }
+        }
+        return productListSelected;
+    }
+
 
     private void LlamadaAdaptadorPropioListView() {
         ProductAdapter adapter_jmh = new ProductAdapter(this, productList);

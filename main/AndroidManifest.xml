@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ListasYAdaptadores">
         <activity
-            android:name="com.example.supermarket.MainActivity"
+            android:name=".Buy"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
