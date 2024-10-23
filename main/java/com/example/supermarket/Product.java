@@ -2,16 +2,13 @@ package com.example.supermarket;
 import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Parcel;
-import android.os.Parcelable;
+
 
 import java.io.ByteArrayOutputStream;
 
 public class Product implements Parcelable {
-    private byte[] imageBytes; // Cambiamos Bitmap por byte[]
+    private byte[] imageBytes;
     private String name;
     private int quantity;
     private double price;
@@ -47,13 +44,13 @@ public class Product implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeByteArray(imageBytes); // Guardar la imagen como byte[]
+        dest.writeByteArray(imageBytes);
         dest.writeString(name);
         dest.writeInt(quantity);
         dest.writeDouble(price);
     }
 
-    // Métodos getter y setter
+
     public Bitmap getImage() {
         return byteArrayToBitmap(imageBytes);
     }

@@ -59,7 +59,7 @@ public class ProductSelectedAdapter extends RecyclerView.Adapter<ProductSelected
         public void bind(Product product) {
             productImage.setImageBitmap(product.getImage());
             productQuantity.setText("Cantidad: " + product.getQuantity());
-            productPrice.setText("Precio: $" + String.format("%.2f", product.getPrice()));
+            productPrice.setText("Precio: " + String.format("%.2f", product.getPrice()) + "€");
             productName.setText(product.getName());
         }
     }

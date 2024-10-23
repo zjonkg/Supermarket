@@ -1,5 +1,6 @@
 package com.example.supermarket;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -11,12 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import android.widget.ListView;
-
+import android.widget.TextView;
 
 
 public class Buy extends AppCompatActivity {
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +28,10 @@ public class Buy extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        double result = 0;
         ArrayList<Product> productList = getIntent().getParcelableArrayListExtra("Product");
 
-
+        TextView total = findViewById(R.id.total);
         RecyclerView recyclerView = findViewById(R.id.recyclerView_products);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -38,5 +39,14 @@ public class Buy extends AppCompatActivity {
             ProductSelectedAdapter productAdapter = new ProductSelectedAdapter(this, productList);
             recyclerView.setAdapter(productAdapter);
         }
+
+
+        for(Product product: productList) {
+           result +=  product.getQuantity() * product.getPrice();
+        }
+
+        total.setText(String.format("%.2f", result) + "€");
+
+
     }
 }
